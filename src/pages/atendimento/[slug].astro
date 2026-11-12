@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import seoMatrix from '../../data/seo_matrix.json';
+import { PROFILE, getWhatsAppLink } from '../../data/profile';
+
+export function getStaticPaths() {
+  return seoMatrix.pages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page }
+  }));
+}
+
+const { page } = Astro.props;
+const isGuaruja = page.city.toLowerCase().includes('guarujá');
+
+const relatedPages = seoMatrix.pages
+  .filter((p) => p.slug !== page.slug && (p.city === page.city || p.specialty === page.specialty))
+  .slice(0, 6);
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `Como funciona a psicoterapia online para ${page.specialty}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `As sessões de psicoterapia online têm duração média de 50 minutos e são conduzidas pela psicóloga ${PROFILE.name} (${PROFILE.crp}) sob a abordagem da Psicanálise, para adolescentes a partir de 15 anos, adultos e idosos.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Quem mora em ${page.city} pode agendar consulta com psicólogo online?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. O atendimento psicológico online é autorizado e regulamentado pelo Conselho Federal de Psicologia (e-Psi), garantindo o mesmo rigor ético e sigilo das sessões presenciais."
+      }
+    }
+  ]
+};
+
+const customWppMsg = `Olá, Daniele! Vi a página sobre ${page.specialty} (${page.city}) e gostaria de saber como funciona a psicoterapia online.`;
+---
+
+<BaseLayout
+  title={`${page.title} | ${PROFILE.name}`}
+  description={`${page.description} Psicoterapia online e psicólogo online com abordagem em Psicanálise para adolescentes (15+), adultos e idosos (${PROFILE.crp}).`}
+  canonicalPath={`/atendimento/${page.slug}`}
+  schema={faqSchema}
+>
+  <nav style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--muted);">
+    <a href="/" style="color: var(--primary); text-decoration: none;">Início</a> &rsaquo;
+    <span>Psicoterapia Online</span> &rsaquo;
+    <span>{page.specialty}</span> &rsaquo;
+    <span>{page.city}</span>
+  </nav>
+
+  <span class="badge">{PROFILE.approach} • {PROFILE.crp} • {page.city}</span>
+  <h1>{page.h1}</h1>
+  <p style="font-size: 1.12rem; color: var(--text);">
+    {page.description} Sessões de <strong>psicoterapia online</strong> conduzidas por <strong>{PROFILE.name}</strong> ({PROFILE.crp}), com escuta psicanalítica dedicada a <strong>adolescentes a partir de 15 anos, adultos e idosos</strong>.
+  </p>
+
+  {isGuaruja && (
+    <div class="card" style="border-left: 4px solid var(--primary); background: #f4f8f6;">
+      <h3>Opção de Atendimento Domiciliar no Guarujá - SP</h3>
+      <p style="margin-bottom: 0; color: var(--text);">
+        Além da modalidade de <strong>psicólogo online</strong> por videochamada, para pacientes residentes na cidade do <strong>Guarujá - SP</strong> existe a possibilidade de atendimento psicológico domiciliar (ideal para idosos ou pessoas que preferem o acompanhamento presencial no conforto de casa, sujeito à disponibilidade de agenda).
+      </p>
+    </div>
+  )}
+
+  <div class="card" style="background: var(--accent); border-color: #cbd8cf;">
+    <h2>Agende sua sessão de psicoterapia online</h2>
+    <p style="color: var(--text);">
+      Atendimento individual por videochamada criptografada, com sigilo absoluto e flexibilidade de horários. Entre em contato para verificar disponibilidade.
+    </p>
+    <a href={getWhatsAppLink(customWppMsg)} target="_blank" rel="noopener noreferrer" class="btn">
+      Falar com Daniele no WhatsApp
+    </a>
+  </div>
+
+  <h2>Como funciona o atendimento psicológico online?</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>1. Abordagem Psicanalítica</h3>
+      <p>Um espaço de fala livre e escuta clínica aprofundada para compreender a origem do sofrimento emocional, sintomas e repetições.</p>
+    </div>
+    <div class="card">
+      <h3>2. Público Atendido</h3>
+      <p>Acompanhamento especializado para <strong>adolescentes (a partir de 15 anos), adultos e idosos</strong>, respeitando a singularidade de cada fase da vida.</p>
+    </div>
+    <div class="card">
+      <h3>3. Sigilo e Ética (e-Psi)</h3>
+      <p>Sessões de 50 minutos via videochamada segura, em total conformidade com o Código de Ética Profissional do Psicólogo ({PROFILE.crp}).</p>
+    </div>
+  </div>
+
+  <h2>Perguntas Frequentes sobre Psicólogo Online</h2>
+  <div class="card">
+    <h3>A psicoterapia online na abordagem da Psicanálise funciona?</h3>
+    <p>Sim. A escuta psicanalítica baseia-se na fala e na relação terapêutica, sendo plenamente eficaz no formato online e regulamentada pelo Conselho Federal de Psicologia.</p>
+  </div>
+  <div class="card">
+    <h3>Qual a formação e trajetória da psicóloga?</h3>
+    <p><strong>{PROFILE.name}</strong> ({PROFILE.crp}) atua hoje a partir do <strong>Guarujá - SP</strong> (onde também oferece opção de atendimento domiciliar), possui experiência anterior em consultório clínico em <strong>Lorena - SP</strong> e é natural de <strong>Piquete - SP</strong>, atendendo pacientes online em todo o Brasil.</p>
+  </div>
+
+  {relatedPages.length > 0 && (
+    <section>
+      <h2>Outras especialidades e localidades em psicoterapia online</h2>
+      <div class="grid">
+        {relatedPages.map((rel) => (
+          <a href={`/atendimento/${rel.slug}`} class="link-card">
+            <strong>{rel.h1}</strong>
+            <span>{rel.city} &bull; Psicoterapia Online &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>

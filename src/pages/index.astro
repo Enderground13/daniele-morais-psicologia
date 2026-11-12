@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import seoMatrix from '../data/seo_matrix.json';
+import { PROFILE, getWhatsAppLink } from '../data/profile';
+
+const specialtyPages = seoMatrix.pages.filter((p) => p.type === 'especialidade');
+const cityPages = seoMatrix.pages.filter((p) => p.type === 'cidade');
+---
+
+<BaseLayout
+  title={`${PROFILE.name} | Psicóloga Online e Psicanálise (${PROFILE.crp})`}
+  description="Psicoterapia online e psicólogo online com abordagem em Psicanálise para adolescentes (15+), adultos e idosos. Atendimento regulamentado pelo CRP (e-Psi) e opção de atendimento domiciliar no Guarujá-SP."
+  canonicalPath="/"
+>
+  <span class="badge">{PROFILE.ePsiStatus} • {PROFILE.crp} • Abordagem: {PROFILE.approach}</span>
+  <h1>Psicoterapia Online e Psicanálise com Ética e Sigilo Profissional</h1>
+  <p style="font-size: 1.15rem; color: var(--text);">
+    Atendimento psicológico online (<strong>psicólogo online</strong> por videochamada) direcionado a <strong>adolescentes a partir de 15 anos, adultos e idosos</strong>. Um espaço de escuta psicanalítica qualificada para trabalhar questões como ansiedade, depressão, esgotamento emocional, luto e conflitos pessoais.
+  </p>
+
+  <div style="margin: 1.75rem 0 2.5rem;">
+    <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" class="btn">
+      Agendar Primeira Sessão pelo WhatsApp
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>Sobre a Psicóloga e a Abordagem Psicanalítica</h2>
+    <p>
+      <strong>{PROFILE.name}</strong> é psicóloga clínica inscrita no Conselho Regional de Psicologia (<strong>{PROFILE.crp}</strong>), com cadastro ativo na plataforma <strong>e-Psi</strong> para realização de <strong>psicoterapia online</strong>.
+    </p>
+    <p>
+      Com atuação fundamentada na <strong>Psicanálise</strong>, oferece escuta clínica individualizada para <strong>adolescentes (a partir de 15 anos), adultos e idosos</strong>. Residente no <strong>Guarujá - SP</strong>, natural de <strong>Piquete - SP</strong> e com sólida experiência prévia em consultório na cidade de <strong>Lorena - SP</strong>, atende pacientes de toda a Baixada Santista, Vale do Paraíba, São Paulo capital e demais localidades do Brasil e do exterior.
+    </p>
+    <p style="margin-bottom: 0; color: var(--primary); font-weight: 600;">
+      Atendimento Domiciliar no Guarujá - SP: Para moradores da cidade do Guarujá, existe também a possibilidade de atendimento psicológico em domicílio (mediante avaliação e disponibilidade de agenda).
+    </p>
+  </div>
+
+  <h2>Áreas de Atendimento em Psicoterapia Online</h2>
+  <div class="grid">
+    {specialtyPages.map((page) => (
+      <a href={`/atendimento/${page.slug}`} class="link-card">
+        <strong>{page.specialty}</strong>
+        <span>{page.description}</span>
+      </a>
+    ))}
+  </div>
+
+  <h2>Psicólogo Online por Cidade e Região</h2>
+  <p>Acesse os detalhes do atendimento psicológico online dedicado às nossas principais regiões de atuação e vínculo:</p>
+  <div class="grid">
+    {cityPages.map((page) => (
+      <a href={`/atendimento/${page.slug}`} class="link-card">
+        <strong>Psicólogo Online em {page.city}</strong>
+        <span>Psicoterapia online e Psicanálise &rarr;</span>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

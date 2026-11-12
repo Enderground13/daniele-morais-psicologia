@@ -1,0 +1,138 @@
+---
+import { PROFILE, getWhatsAppLink } from '../data/profile';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  schema?: Record<string, any>;
+}
+
+const { title, description, canonicalPath = "/", schema } = Astro.props;
+const canonicalURL = new URL(canonicalPath, PROFILE.siteUrl).toString();
+
+const baseSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": `${PROFILE.siteUrl}/#business`,
+      "name": `${PROFILE.name} - Psicologia Clínica Online`,
+      "description": "Atendimento psicológico online regulamentado pelo Conselho Federal de Psicologia (CRP/e-Psi). Base no Guarujá-SP com atendimento para Baixada Santista, Lorena, Piquete e todo o Brasil.",
+      "url": PROFILE.siteUrl,
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guarujá",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Guarujá" },
+        { "@type": "City", "name": "Santos" },
+        { "@type": "City", "name": "São Vicente" },
+        { "@type": "City", "name": "Praia Grande" },
+        { "@type": "City", "name": "Lorena" },
+        { "@type": "City", "name": "Piquete" },
+        { "@type": "City", "name": "São Paulo" },
+        { "@type": "Country", "name": "Brasil" }
+      ],
+      "knowsAbout": [
+        "Psicoterapia Online",
+        "Ansiedade",
+        "Depressão",
+        "Burnout",
+        "Autoestima",
+        "Luto",
+        "Saúde Mental"
+      ]
+    },
+    ...(schema ? [schema] : [])
+  ]
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={PROFILE.siteName} />
+    <script type="application/ld+json" set:html={JSON.stringify(baseSchema)} />
+    <style is:global>
+      :root {
+        --bg: #fafaf9;
+        --surface: #ffffff;
+        --text: #1c1917;
+        --muted: #57534e;
+        --primary: #1e4d40;
+        --primary-hover: #14362d;
+        --accent: #e7efe9;
+        --border: #e7e5e4;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+      }
+      .container { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+      header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 0; position: sticky; top: 0; z-index: 10; }
+      .nav-wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+      .brand { font-weight: 700; color: var(--primary); text-decoration: none; font-size: 1.1rem; }
+      .brand span { display: block; font-size: 0.78rem; font-weight: 500; color: var(--muted); }
+      .btn { display: inline-block; background: var(--primary); color: #fff; padding: 0.75rem 1.35rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+      .btn:hover { background: var(--primary-hover); }
+      .btn-sm { padding: 0.5rem 1rem; font-size: 0.88rem; }
+      main { padding: 2.5rem 0 4rem; }
+      h1 { font-size: clamp(1.75rem, 3.5vw, 2.4rem); line-height: 1.2; color: var(--primary); margin-bottom: 1rem; }
+      h2 { font-size: 1.4rem; color: var(--text); margin: 2rem 0 0.85rem; }
+      h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 0.4rem; }
+      p { margin-bottom: 1rem; color: var(--muted); }
+      .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; }
+      .badge { display: inline-block; background: var(--accent); color: var(--primary); font-size: 0.8rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 0.85rem; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem; margin-top: 1rem; }
+      .link-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; text-decoration: none; color: var(--text); }
+      .link-card:hover { border-color: var(--primary); }
+      .link-card strong { display: block; color: var(--primary); margin-bottom: 0.25rem; font-size: 0.98rem; }
+      .link-card span { font-size: 0.85rem; color: var(--muted); }
+      footer { background: var(--surface); border-top: 1px solid var(--border); padding: 2rem 0; font-size: 0.85rem; color: var(--muted); }
+      .ethics-box { background: #f5f5f4; border-left: 4px solid var(--primary); padding: 1rem; border-radius: 6px; margin-top: 1rem; font-size: 0.82rem; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav-wrap">
+        <a href="/" class="brand">
+          {PROFILE.name}
+          <span>Psicóloga Clínica • {PROFILE.crp}</span>
+        </a>
+        <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
+          Agendar Conversa Inicial
+        </a>
+      </div>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+    <footer>
+      <div class="container">
+        <p><strong>{PROFILE.name}</strong> — {PROFILE.crp} | {PROFILE.ePsiStatus}</p>
+        <p>Base profissional em Guarujá - SP • Trajetória clínica em Lorena - SP e Piquete - SP • Atendimento Online em todo o Brasil.</p>
+        <div class="ethics-box">
+          <strong>Aviso Ético (Resolução CFP nº 11/2018):</strong> O atendimento psicológico online é realizado em ambiente virtual sigiloso e criptografado. Este serviço não oferece suporte imediato para crises suicidas ou emergências psiquiátricas. Em caso de urgência, ligue gratuitamente para o <strong>CVV (188)</strong> ou procure o pronto-socorro mais próximo.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
