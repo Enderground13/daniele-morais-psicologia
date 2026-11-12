@@ -14,5 +14,107 @@ const homeCareCities = seoMatrix.pages.filter(
   description="Psicoterapia online ética e acolhedora para adolescentes (15+), adultos e idosos. Atendimento por videochamada de onde você estiver, com sigilo absoluto, recibo para reembolso e opção domiciliar em Guarujá e Santos."
   canonicalPath="/"
 >
-  <!-- Estrutura principal otimizada para UX e conversão -->
+  <section class="hero">
+    <span class="badge">Atendimento Online Regulamentado • {PROFILE.crp}</span>
+    <h1>Psicoterapia Online: um espaço seguro para cuidar de você, onde estiver.</h1>
+    <p class="hero-sub">
+      Escuta profissional, acolhedora e sigilosa por videochamada para ajudar você a atravessar ansiedade, esgotamento, tristeza ou momentos difíceis sem precisar enfrentar trânsito.
+    </p>
+    <div>
+      <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" class="btn">
+        Agendar Primeira Conversa pelo WhatsApp &rarr;
+      </a>
+    </div>
+    <div class="trust-strip">
+      <span>&#10003; 10 anos de experiência clínica</span>
+      <span>&#10003; Adolescentes (15+), Adultos e Idosos</span>
+      <span>&#10003; Manhã e Tarde • Recibo p/ Reembolso</span>
+    </div>
+  </section>
+
+  <div class="card" style="overflow: hidden;">
+    <h2>Sobre Daniele Barbosa Pirriello de Morais</h2>
+    <img
+      src="/daniele-morais-psicologa.jpeg"
+      alt="Daniele Barbosa Pirriello de Morais - Psicóloga Clínica"
+      style="width:170px;height:170px;object-fit:cover;object-position:center top;border-radius:14px;float:left;margin:0 1.35rem 1rem 0;border:2px solid var(--border);"
+    />
+    <p>
+      <strong>{PROFILE.name}</strong> ({PROFILE.crp}) tem 37 anos, é casada, mãe e psicóloga clínica com <strong>10 anos de experiência</strong> (atuação presencial desde 2016 e psicoterapia online consolidada desde 2021).
+    </p>
+    <p>
+      Sua escuta é orientada pela <strong>Psicanálise Winnicottiana</strong> (referência em <em>Donald Woods Winnicott</em>), abordagem reconhecida por oferecer um ambiente de sustento emocional (<em>holding</em>) e respeito ao tempo de cada pessoa.
+    </p>
+    <p>
+      Graduada pelo <strong>UNISAL</strong>, iniciou sua prática na <strong>USP-Lorena</strong> e atua online para todo o Brasil, com residência em <strong>Guarujá-SP</strong>.
+    </p>
+
+    <div class="grid" style="clear: both; padding-top: 0.75rem;">
+      <div style="background: var(--bg); padding: 1.1rem; border-radius: 10px; border: 1px solid var(--border);">
+        <h3 style="font-size: 0.98rem;">Horários e Reembolso</h3>
+        <p style="margin-bottom: 0; font-size: 0.9rem;">Sessões nos períodos da <strong>manhã e da tarde</strong>. Atendimento particular com emissão de <strong>recibo para reembolso</strong>.</p>
+      </div>
+      <div style="background: var(--warm-bg); padding: 1.1rem; border-radius: 10px; border-left: 4px solid var(--cta);">
+        <h3 style="font-size: 0.98rem;">Atendimento Domiciliar (Guarujá e Santos)</h3>
+        <p style="margin-bottom: 0; font-size: 0.9rem;">Opção presencial em domicílio em <strong>Guarujá e Santos</strong> para idosos ou pessoas com mobilidade reduzida.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>A praticidade de fazer terapia de onde você estiver</h2>
+  <div class="card" style="background: var(--accent); border-color: #cbd8cf;">
+    <p style="color: var(--text); font-size: 1.05rem;">
+      A <strong>psicoterapia online</strong> rompe barreiras geográficas e se adapta à sua rotina real. Você pode realizar sua sessão por videochamada pelo celular ou computador, esteja você <strong>no conforto da sua casa, em uma sala reservada no intervalo do trabalho, em uma praça tranquila ou em outra cidade ou país</strong>.
+    </p>
+    <p style="color: var(--text); margin-bottom: 0;">
+      Para aproveitar o encontro com profundidade e segurança, basta escolher um lugar onde você esteja <strong>a sós, à vontade para falar livremente</strong> e com uma conexão estável à internet.
+    </p>
+  </div>
+
+  <h2>Como a psicoterapia online pode ajudar você</h2>
+  <div class="grid">
+    {specialtyPages.map((page) => (
+      <a href={`/atendimento/${page.slug}`} class="link-card">
+        <strong>{page.specialty}</strong>
+        <span>{page.description}</span>
+      </a>
+    ))}
+  </div>
+
+  <h2>Atendimento Domiciliar em Guarujá - SP e Santos - SP</h2>
+  <p>Enquanto o formato online atende pacientes de qualquer lugar do Brasil e do mundo, nas cidades de <strong>Guarujá</strong> e <strong>Santos</strong> há também a modalidade presencial em domicílio:</p>
+  <div class="grid">
+    {homeCareCities.map((page) => (
+      <a href={`/atendimento/${page.slug}`} class="link-card" style="border-left: 4px solid var(--primary);">
+        <strong>Psicologia Online e Domiciliar em {page.city}</strong>
+        <span>Saiba como funciona o atendimento na região &rarr;</span>
+      </a>
+    ))}
+  </div>
+
+  <div class="card" style="margin-top: 1.5rem; background: var(--warm-bg); border: 1px solid #edd6ca; border-left: 5px solid var(--cta);">
+    <span style="display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--cta); margin-bottom: 0.4rem;">
+      Cuidado Especializado • Guarujá - SP e Santos - SP
+    </span>
+    <h3 style="font-size: 1.2rem; margin-bottom: 0.6rem;">Quando o cuidado precisa ir até você</h3>
+    <p style="color: var(--text);">
+      Em <strong>Guarujá - SP</strong> e <strong>Santos - SP</strong>, o atendimento psicológico domiciliar é dedicado especialmente a:
+    </p>
+    <p style="color: var(--text);">
+      &bull; <strong>Idosos</strong> e pessoas com <strong>dificuldades de mobilidade</strong>;<br />
+      &bull; Pacientes em <strong>quadros depressivos mais graves</strong> ou sofrimento emocional agudo, nos quais sair de casa se torna momentaneamente difícil devido à enfermidade.
+    </p>
+    <a href={getWhatsAppLink("Olá, Daniele! Gostaria de saber como funciona a disponibilidade para atendimento psicológico domiciliar em Guarujá/Santos.")} target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="margin-top: 0.35rem;">
+      Consultar Disponibilidade Domiciliar
+    </a>
+  </div>
+
+  <blockquote style="margin-top: 2rem; background: var(--accent); border-radius: 16px; padding: 1.75rem 2rem; border: 1px solid var(--border); position: relative;">
+    <p style="font-size: 1.15rem; font-style: italic; color: var(--primary); font-weight: 500; margin-bottom: 0.65rem;">
+      “É uma alegria estar escondido, mas um desastre não ser encontrado.”
+    </p>
+    <footer style="background: transparent; border: none; padding: 0; font-size: 0.88rem; color: var(--muted);">
+      — <strong>Donald Woods Winnicott</strong>, pediatra e psicanalista. Um convite para que você não precise atravessar o isolamento sozinho.
+    </footer>
+  </blockquote>
 </BaseLayout>
