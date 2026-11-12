@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PROFILE, getWhatsAppLink } from '../../data/profile';
+
+const pageTitle = `Psicoterapia Online Funciona? Como Criar um Espaço Seguro | ${PROFILE.name}`;
+const pageDesc = "Entenda como o atendimento psicológico por videochamada preserva o sigilo, a profundidade clínica e se adapta à sua rotina em casa, no trabalho ou onde estiver.";
+
+const articleSchema = {
+  "@type": "Article",
+  "headline": "Psicoterapia Online Funciona? Como Criar um Espaço Seguro em Casa ou no Trabalho",
+  "description": pageDesc,
+  "datePublished": "2026-11-12",
+  "author": { "@id": `${PROFILE.siteUrl}/#person` },
+  "publisher": { "@id": `${PROFILE.siteUrl}/#business` }
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  canonicalPath="/artigos/psicoterapia-online-espaco-seguro"
+  schema={articleSchema}
+>
+  <nav style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--muted);">
+    <a href="/" style="color: var(--primary); text-decoration: none;">Início</a> &rsaquo;
+    <span>Artigos Clínicos</span> &rsaquo;
+    <span>Psicoterapia Online e Espaço Seguro</span>
+  </nav>
+
+  <article class="card">
+    <span class="badge">Psicoterapia Online • {PROFILE.crp}</span>
+    <h1>Psicoterapia Online Funciona? Como Criar um Espaço Seguro em Casa ou no Trabalho</h1>
+    <p style="font-size: 1.12rem; color: var(--text);">
+      Entenda como o atendimento psicológico por videochamada preserva o sigilo, a profundidade clínica e se adapta à sua rotina real.
+    </p>
+
+    <p>
+      Muitas pessoas adiam o início da psicoterapia por acreditarem que o cuidado emocional exige deslocamento até um consultório físico ou por não encontrarem tempo livre entre o trabalho, os estudos e os compromissos familiares. A <strong>psicoterapia online</strong> elimina essa barreira geográfica e permite que você cuide de si mesmo de onde estiver.
+    </p>
+    <p>
+      Regulamentado pelo Conselho Federal de Psicologia (cadastro <strong>e-Psi</strong> ativo), o atendimento online realizado por <strong>{PROFILE.name} ({PROFILE.crp})</strong> une 10 anos de experiência clínica (presencial desde 2016 e online desde 2021) a uma escuta acolhedora para <strong>adolescentes a partir de 15 anos, adultos e idosos</strong>.
+    </p>
+
+    <h2>A escuta psicanalítica funciona por videochamada?</h2>
+    <p>
+      Sim. Na orientação da <strong>Psicanálise Winnicottiana</strong>, o elemento central do tratamento não são as paredes do consultório, mas o vínculo de confiança construído entre paciente e psicóloga. A palavra, a escuta atenta e o acolhimento acontecem plenamente por meio da videochamada.
+    </p>
+
+    <h2>Como preparar seu espaço para a sessão online?</h2>
+    <p>
+      Você não precisa de uma estrutura complexa. É possível realizar sua sessão estando <strong>em casa, em uma sala reservada no intervalo do trabalho, em uma praça tranquila ou até durante uma viagem</strong>. Para que o encontro seja proveitoso, observe apenas três cuidados simples:
+    </p>
+    <p><strong>1. Privacidade:</strong> Escolha um local onde você esteja <strong>a sós</strong> e se sinta à vontade para falar livremente, sem receio de ser ouvido por terceiros.</p>
+    <p><strong>2. Fones de ouvido:</strong> O uso de fones aumenta a sensação de intimidade e reforça o sigilo da conversa.</p>
+    <p><strong>3. Conexão estável:</strong> Um celular, tablet ou computador com acesso à internet em um ambiente silencioso.</p>
+
+    <h2>Informações práticas</h2>
+    <p><strong>&bull; Público atendido:</strong> Adolescentes (a partir de 15 anos), adultos e idosos.</p>
+    <p><strong>&bull; Turnos:</strong> Atendimentos nos períodos da <strong>manhã e da tarde</strong>.</p>
+    <p><strong>&bull; Reembolso:</strong> Atendimento particular com emissão de <strong>recibo válido para solicitação de reembolso</strong> em convênios médicos.</p>
+
+    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--accent); border-radius: 12px; border: 1px solid #cbd8cf;">
+      <h3>Pronto para dar o primeiro passo?</h3>
+      <p style="color: var(--text);">Envie uma mensagem pelo WhatsApp para verificar horários disponíveis pela manhã ou à tarde.</p>
+      <a href={getWhatsAppLink("Olá, Daniele! Li o artigo sobre psicoterapia online e gostaria de saber sobre horários disponíveis.")} target="_blank" rel="noopener noreferrer" class="btn">
+        Agendar Primeira Conversa pelo WhatsApp
+      </a>
+    </div>
+  </article>
+</BaseLayout>

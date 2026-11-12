@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PROFILE, getWhatsAppLink } from '../../data/profile';
+
+const pageTitle = `Atendimento Psicológico Domiciliar em Guarujá e Santos | ${PROFILE.name}`;
+const pageDesc = "Saiba como funciona a psicoterapia em domicílio em Guarujá - SP e Santos - SP para idosos, pessoas com mobilidade reduzida e pacientes em quadros depressivos.";
+
+const articleSchema = {
+  "@type": "Article",
+  "headline": "Atendimento Psicológico Domiciliar em Guarujá e Santos: Quando o Cuidado Vai Até Você",
+  "description": pageDesc,
+  "datePublished": "2026-11-12",
+  "author": { "@id": `${PROFILE.siteUrl}/#person` },
+  "publisher": { "@id": `${PROFILE.siteUrl}/#business` }
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  canonicalPath="/artigos/atendimento-domiciliar-guaruja-santos"
+  schema={articleSchema}
+>
+  <nav style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--muted);">
+    <a href="/" style="color: var(--primary); text-decoration: none;">Início</a> &rsaquo;
+    <span>Artigos Clínicos</span> &rsaquo;
+    <span>Atendimento Domiciliar Guarujá e Santos</span>
+  </nav>
+
+  <article class="card">
+    <span class="badge">Guarujá - SP &amp; Santos - SP • {PROFILE.crp}</span>
+    <h1>Atendimento Psicológico Domiciliar em Guarujá e Santos: Quando o Cuidado Vai Até Você</h1>
+    <p style="font-size: 1.12rem; color: var(--text);">
+      Saiba como funciona a psicoterapia em domicílio para idosos, pessoas com mobilidade reduzida e pacientes em quadros depressivos que dificultam a saída de casa.
+    </p>
+
+    <p>
+      Quando o sofrimento emocional se soma a uma limitação física ou à perda de energia vital, o simples ato de sair de casa, enfrentar o trânsito ou ir até um consultório pode se tornar uma barreira quase intransponível. Nessas situações, o <strong>atendimento psicológico domiciliar</strong> surge como uma alternativa ética, humana e necessária para que o cuidado com a saúde mental não seja interrompido.
+    </p>
+    <p>
+      Nas cidades de <strong>Guarujá - SP</strong> e <strong>Santos - SP</strong>, a psicóloga clínica <strong>{PROFILE.name} ({PROFILE.crp})</strong> oferece a possibilidade de acompanhamento psicológico em domicílio mediante disponibilidade de agenda.
+    </p>
+
+    <h2>Para quem o atendimento domiciliar é indicado?</h2>
+    <p><strong>&bull; Idosos:</strong> O envelhecimento traz mudanças profundas, como lutos, aposentadoria, perda de autonomia e sentimento de solidão. Receber a psicóloga no próprio lar oferece conforto físico e segurança emocional.</p>
+    <p><strong>&bull; Pessoas com dificuldades de mobilidade:</strong> Pacientes em recuperação pós-operatória, com limitações motoras ou condições crônicas que impedem o deslocamento frequente.</p>
+    <p><strong>&bull; Pacientes em quadros depressivos mais intensos:</strong> A depressão grave costuma provocar fadiga extrema, recolhimento e dificuldade de interação social. O atendimento em casa permite iniciar o vínculo terapêutico respeitando o ritmo possível daquele momento.</p>
+
+    <h2>Como funciona a sessão dentro de casa?</h2>
+    <p>Mesmo fora do consultório tradicional, todo o rigor ético e o sigilo profissional permanecem intactos:</p>
+    <p><strong>1. Ambiente reservado:</strong> A sessão tem duração média de 50 minutos e ocorre em um cômodo tranquilo da residência onde o paciente possa conversar a sós, com privacidade.</p>
+    <p><strong>2. Escuta acolhedora (Psicanálise Winnicottiana):</strong> Baseada na clínica de Donald Woods Winnicott, a condução prioriza um ambiente de sustento emocional (<em>holding</em>), sem julgamentos ou pressa.</p>
+    <p><strong>3. Horários e reembolso:</strong> Os atendimentos são realizados nos períodos da <strong>manhã e da tarde</strong>, com emissão de <strong>recibo para reembolso</strong> junto a planos de saúde.</p>
+
+    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--warm-bg); border-radius: 12px; border-left: 4px solid var(--cta);">
+      <h3>Consultar disponibilidade em Guarujá - SP ou Santos - SP</h3>
+      <p style="color: var(--text);">Entre em contato pelo WhatsApp para verificar horários disponíveis para atendimento domiciliar ou online.</p>
+      <a href={getWhatsAppLink("Olá, Daniele! Li o artigo sobre atendimento psicológico domiciliar em Guarujá/Santos e gostaria de consultar disponibilidade.")} target="_blank" rel="noopener noreferrer" class="btn">
+        Consultar Disponibilidade pelo WhatsApp
+      </a>
+    </div>
+  </article>
+</BaseLayout>
