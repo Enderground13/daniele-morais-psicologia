@@ -12,7 +12,6 @@ const cityPages = seoMatrix.pages.filter((p) => p.type === 'cidade');
   description="Psicoterapia online ética e acolhedora para adolescentes (15+), adultos e idosos. Atendimento por videochamada com sigilo absoluto, recibo para reembolso e opção domiciliar em Guarujá e Santos."
   canonicalPath="/"
 >
-  <!-- PRIMEIRA DOBRA: Gancho Imediato (Regra dos 3 Segundos) -->
   <section class="hero">
     <span class="badge">Atendimento Online Regulamentado • {PROFILE.crp}</span>
     <h1>Psicoterapia Online: um espaço seguro para cuidar de você, onde estiver.</h1>
@@ -31,7 +30,6 @@ const cityPages = seoMatrix.pages.filter((p) => p.type === 'cidade');
     </div>
   </section>
 
-  <!-- SEGUNDA DOBRA: Conexão Humana, Foto e Abordagem Psicanalítica -->
   <div class="card" style="overflow: hidden;">
     <h2>Sobre Daniele Barbosa Pirriello de Morais</h2>
     <img
@@ -61,7 +59,6 @@ const cityPages = seoMatrix.pages.filter((p) => p.type === 'cidade');
     </div>
   </div>
 
-  <!-- TERCEIRA DOBRA: Redução de Fricção -->
   <h2>Como funciona o início da sua psicoterapia online</h2>
   <div class="grid">
     <div class="card">
@@ -78,7 +75,6 @@ const cityPages = seoMatrix.pages.filter((p) => p.type === 'cidade');
     </div>
   </div>
 
-  <!-- QUARTA DOBRA: Clusters de SEO Programático -->
   <h2>Como a psicoterapia online pode ajudar você</h2>
   <div class="grid">
     {specialtyPages.map((page) => (
@@ -91,11 +87,42 @@ const cityPages = seoMatrix.pages.filter((p) => p.type === 'cidade');
 
   <h2>Psicólogo Online por Cidade e Região</h2>
   <div class="grid">
-    {cityPages.map((page) => (
-      <a href={`/atendimento/${page.slug}`} class="link-card">
-        <strong>Psicólogo Online em {page.city}</strong>
-        <span>Saiba como agendar sua sessão &rarr;</span>
-      </a>
-    ))}
+    {cityPages.map((page) => {
+      const hasHomeCare = page.city.includes('Guarujá') || page.city.includes('Santos');
+      return (
+        <a href={`/atendimento/${page.slug}`} class="link-card" style={hasHomeCare ? "border-left: 4px solid var(--primary);" : ""}>
+          <strong>Psicólogo Online em {page.city}</strong>
+          <span>
+            {hasHomeCare ? "Online + Opção Domiciliar • Saiba mais →" : "Saiba como agendar sua sessão →"}
+          </span>
+        </a>
+      );
+    })}
   </div>
+
+  <div class="card" style="margin-top: 1.75rem; background: var(--warm-bg); border: 1px solid #edd6ca; border-left: 5px solid var(--cta);">
+    <span style="display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--cta); margin-bottom: 0.4rem;">
+      Cuidado Especializado • Guarujá - SP e Santos - SP
+    </span>
+    <h3 style="font-size: 1.2rem; margin-bottom: 0.6rem;">Atendimento Psicológico Domiciliar</h3>
+    <p style="color: var(--text);">
+      Quando o deslocamento até um consultório se torna um obstáculo, o cuidado psicológico vai até você. Nas cidades de <strong>Guarujá - SP</strong> e <strong>Santos - SP</strong>, há a possibilidade de <strong>atendimento psicológico domiciliar</strong> dedicado a:
+    </p>
+    <p style="color: var(--text);">
+      &bull; <strong>Idosos</strong> e pessoas com <strong>dificuldades de mobilidade</strong>;<br />
+      &bull; Pacientes em <strong>quadros depressivos mais intensos</strong> ou sofrimento emocional agudo, nos quais sair de casa seja temporariamente difícil devido à gravidade do quadro clínico.
+    </p>
+    <a href={getWhatsAppLink("Olá, Daniele! Gostaria de saber como funciona a disponibilidade para atendimento psicológico domiciliar em Guarujá/Santos.")} target="_blank" rel="noopener noreferrer" class="btn btn-sm" style="margin-top: 0.35rem;">
+      Consultar Disponibilidade Domiciliar
+    </a>
+  </div>
+
+  <blockquote style="margin-top: 2rem; background: var(--accent); border-radius: 16px; padding: 1.75rem 2rem; border: 1px solid var(--border); position: relative;">
+    <p style="font-size: 1.15rem; font-style: italic; color: var(--primary); font-weight: 500; margin-bottom: 0.65rem;">
+      “É uma alegria estar escondido, mas um desastre não ser encontrado.”
+    </p>
+    <footer style="background: transparent; border: none; padding: 0; font-size: 0.88rem; color: var(--muted);">
+      — <strong>Donald Woods Winnicott</strong>, pediatra e psicanalista. Um convite para que você não precise atravessar o isolamento sozinho.
+    </footer>
+  </blockquote>
 </BaseLayout>
