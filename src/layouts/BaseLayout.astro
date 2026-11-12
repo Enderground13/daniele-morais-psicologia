@@ -17,9 +17,10 @@ const baseSchema = {
     {
       "@type": "ProfessionalService",
       "@id": `${PROFILE.siteUrl}/#business`,
-      "name": `${PROFILE.name} - Psicologia Clínica Online`,
-      "description": "Atendimento psicológico online regulamentado pelo Conselho Federal de Psicologia (CRP/e-Psi). Base no Guarujá-SP com atendimento para Baixada Santista, Lorena, Piquete e todo o Brasil.",
+      "name": `${PROFILE.name} — Psicologia Clínica e Psicanálise Winnicottiana`,
+      "description": `Psicoterapia online e atendimento domiciliar (Guarujá e Santos) com abordagem em Psicanálise Winnicottiana. Psicóloga graduada pelo UNISAL, com experiência clínica desde 2016 (${PROFILE.crp}). Atendimento para adolescentes (15+), adultos e idosos nos períodos da manhã e tarde, com recibo para reembolso.`,
       "url": PROFILE.siteUrl,
+      "telephone": "+55-12-98102-6474",
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
@@ -38,14 +39,28 @@ const baseSchema = {
         { "@type": "Country", "name": "Brasil" }
       ],
       "knowsAbout": [
+        "Psicanálise Winnicottiana",
+        "Donald Woods Winnicott",
         "Psicoterapia Online",
+        "Atendimento Psicológico Domiciliar Guarujá e Santos",
         "Ansiedade",
         "Depressão",
         "Burnout",
-        "Autoestima",
-        "Luto",
-        "Saúde Mental"
+        "Saúde Mental do Idoso",
+        "Psicoterapia para Adolescentes"
       ]
+    },
+    {
+      "@type": "Person",
+      "@id": `${PROFILE.siteUrl}/#person`,
+      "name": PROFILE.name,
+      "jobTitle": "Psicóloga Clínica — Psicanálise Winnicottiana",
+      "identifier": PROFILE.crp,
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "UNISAL - Centro Universitário Salesiano de São Paulo"
+      },
+      "worksFor": { "@id": `${PROFILE.siteUrl}/#business` }
     },
     ...(schema ? [schema] : [])
   ]
@@ -89,15 +104,15 @@ const baseSchema = {
       .container { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
       header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 0; position: sticky; top: 0; z-index: 10; }
       .nav-wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-      .brand { font-weight: 700; color: var(--primary); text-decoration: none; font-size: 1.1rem; }
+      .brand { font-weight: 700; color: var(--primary); text-decoration: none; font-size: 1.05rem; }
       .brand span { display: block; font-size: 0.78rem; font-weight: 500; color: var(--muted); }
       .btn { display: inline-block; background: var(--primary); color: #fff; padding: 0.75rem 1.35rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
       .btn:hover { background: var(--primary-hover); }
       .btn-sm { padding: 0.5rem 1rem; font-size: 0.88rem; }
       main { padding: 2.5rem 0 4rem; }
-      h1 { font-size: clamp(1.75rem, 3.5vw, 2.4rem); line-height: 1.2; color: var(--primary); margin-bottom: 1rem; }
-      h2 { font-size: 1.4rem; color: var(--text); margin: 2rem 0 0.85rem; }
-      h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 0.4rem; }
+      h1 { font-size: clamp(1.75rem, 3.5vw, 2.35rem); line-height: 1.2; color: var(--primary); margin-bottom: 1rem; }
+      h2 { font-size: 1.38rem; color: var(--text); margin: 2rem 0 0.85rem; }
+      h3 { font-size: 1.08rem; color: var(--primary); margin-bottom: 0.4rem; }
       p { margin-bottom: 1rem; color: var(--muted); }
       .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; }
       .badge { display: inline-block; background: var(--accent); color: var(--primary); font-size: 0.8rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 0.85rem; }
@@ -115,7 +130,7 @@ const baseSchema = {
       <div class="container nav-wrap">
         <a href="/" class="brand">
           {PROFILE.name}
-          <span>Psicóloga Clínica • {PROFILE.crp}</span>
+          <span>Psicóloga Clínica • {PROFILE.shortApproach} • {PROFILE.crp}</span>
         </a>
         <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
           Agendar Conversa Inicial
@@ -127,8 +142,8 @@ const baseSchema = {
     </main>
     <footer>
       <div class="container">
-        <p><strong>{PROFILE.name}</strong> — {PROFILE.crp} | {PROFILE.ePsiStatus}</p>
-        <p>Base profissional em Guarujá - SP • Trajetória clínica em Lorena - SP e Piquete - SP • Atendimento Online em todo o Brasil.</p>
+        <p><strong>{PROFILE.name}</strong> — {PROFILE.crp} | {PROFILE.approach} | {PROFILE.ePsiStatus}</p>
+        <p>{PROFILE.education} • Experiência clínica desde 2016 • {PROFILE.schedule} • {PROFILE.reimbursement}.</p>
         <div class="ethics-box">
           <strong>Aviso Ético (Resolução CFP nº 11/2018):</strong> O atendimento psicológico online é realizado em ambiente virtual sigiloso e criptografado. Este serviço não oferece suporte imediato para crises suicidas ou emergências psiquiátricas. Em caso de urgência, ligue gratuitamente para o <strong>CVV (188)</strong> ou procure o pronto-socorro mais próximo.
         </div>

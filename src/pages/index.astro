@@ -8,33 +8,56 @@ const cityPages = seoMatrix.pages.filter((p) => p.type === 'cidade');
 ---
 
 <BaseLayout
-  title={`${PROFILE.name} | Psicóloga Online e Psicanálise (${PROFILE.crp})`}
-  description="Psicoterapia online e psicólogo online com abordagem em Psicanálise para adolescentes (15+), adultos e idosos. Atendimento regulamentado pelo CRP (e-Psi) e opção de atendimento domiciliar no Guarujá-SP."
+  title={`${PROFILE.name} | Psicóloga Online e Psicanálise Winnicottiana (${PROFILE.crp})`}
+  description="Psicoterapia online e psicólogo online com orientação na Psicanálise Winnicottiana. Graduada pelo UNISAL, atuação clínica desde 2016. Atendimento para adolescentes (15+), adultos e idosos (manhã e tarde) com recibo para reembolso."
   canonicalPath="/"
 >
-  <span class="badge">{PROFILE.ePsiStatus} • {PROFILE.crp} • Abordagem: {PROFILE.approach}</span>
-  <h1>Psicoterapia Online e Psicanálise com Ética e Sigilo Profissional</h1>
+  <span class="badge">{PROFILE.ePsiStatus} • {PROFILE.crp} • {PROFILE.shortApproach}</span>
+  <h1>Psicoterapia Online e Psicanálise Winnicottiana com Acolhimento e Sigilo</h1>
   <p style="font-size: 1.15rem; color: var(--text);">
-    Atendimento psicológico online (<strong>psicólogo online</strong> por videochamada) direcionado a <strong>adolescentes a partir de 15 anos, adultos e idosos</strong>. Um espaço de escuta psicanalítica qualificada para trabalhar questões como ansiedade, depressão, esgotamento emocional, luto e conflitos pessoais.
+    Atendimento psicológico online (<strong>psicólogo online</strong> e <strong>psicoterapia online</strong> por videochamada) para <strong>adolescentes a partir de 15 anos, adultos e idosos</strong>. Uma escuta clínica sensível, orientada pela obra de <strong>Donald Woods Winnicott</strong>, oferecendo um ambiente seguro para elaborar ansiedades, quadros depressivos, lutos e transições da vida.
   </p>
 
   <div style="margin: 1.75rem 0 2.5rem;">
     <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" class="btn">
-      Agendar Primeira Sessão pelo WhatsApp
+      Agendar Primeira Conversa pelo WhatsApp
     </a>
   </div>
 
   <div class="card">
-    <h2>Sobre a Psicóloga e a Abordagem Psicanalítica</h2>
+    <h2>Sobre Daniele Barbosa Pirriello de Morais</h2>
     <p>
-      <strong>{PROFILE.name}</strong> é psicóloga clínica inscrita no Conselho Regional de Psicologia (<strong>{PROFILE.crp}</strong>), com cadastro ativo na plataforma <strong>e-Psi</strong> para realização de <strong>psicoterapia online</strong>.
+      <strong>{PROFILE.name}</strong> ({PROFILE.crp}) tem 37 anos, é casada, mãe e psicóloga clínica com <strong>10 anos de experiência</strong> (atuação presencial desde 2016 e atendimento online consolidado desde 2021).
     </p>
     <p>
-      Com atuação fundamentada na <strong>Psicanálise</strong>, oferece escuta clínica individualizada para <strong>adolescentes (a partir de 15 anos), adultos e idosos</strong>. Residente no <strong>Guarujá - SP</strong>, natural de <strong>Piquete - SP</strong> e com sólida experiência prévia em consultório na cidade de <strong>Lorena - SP</strong>, atende pacientes de toda a Baixada Santista, Vale do Paraíba, São Paulo capital e demais localidades do Brasil e do exterior.
+      Graduada em Psicologia pelo <strong>UNISAL (Universidade Salesiana de Lorena-SP)</strong>, iniciou sua trajetória prática na <strong>USP-Lorena</strong> e construiu sólida experiência em consultório clínico na cidade de <strong>Lorena-SP</strong>. Natural de <strong>Piquete-SP</strong> e residente atual no <strong>Guarujá-SP</strong>, alia rigor ético à sensibilidade humana para acolher cada paciente em sua singularidade.
     </p>
-    <p style="margin-bottom: 0; color: var(--primary); font-weight: 600;">
-      Atendimento Domiciliar no Guarujá - SP: Para moradores da cidade do Guarujá, existe também a possibilidade de atendimento psicológico em domicílio (mediante avaliação e disponibilidade de agenda).
-    </p>
+    <div class="grid" style="margin-top: 1.25rem;">
+      <div style="background: #f5f5f4; padding: 1rem; border-radius: 8px;">
+        <h3 style="font-size: 0.98rem;">Horários e Reembolso</h3>
+        <p style="margin-bottom: 0; font-size: 0.9rem;">Atendimento nos períodos da <strong>manhã e da tarde</strong>. Sessões particulares com emissão de <strong>recibo para reembolso</strong> junto a planos de saúde.</p>
+      </div>
+      <div style="background: #f4f8f6; padding: 1rem; border-radius: 8px; border-left: 3px solid var(--primary);">
+        <h3 style="font-size: 0.98rem;">Atendimento Domiciliar (Guarujá e Santos)</h3>
+        <p style="margin-bottom: 0; font-size: 0.9rem;">Possibilidade de atendimento em domicílio em <strong>Guarujá e Santos</strong> para idosos, pessoas com mobilidade reduzida ou pacientes em quadros depressivos com dificuldade de deslocamento.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Como Funciona a Primeira Sessão</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>1. Contato Inicial Sem Burocracia</h3>
+      <p>Você envia uma mensagem pelo WhatsApp para verificar horários disponíveis nos períodos da manhã ou tarde e esclarecer suas dúvidas iniciais.</p>
+    </div>
+    <div class="card">
+      <h3>2. Acolhimento e Escuta (Holding)</h3>
+      <p>Na primeira sessão (50 minutos), conversamos sobre o que motivou sua busca pela psicoterapia, no seu ritmo, em ambiente virtual sigiloso e livre de julgamentos.</p>
+    </div>
+    <div class="card">
+      <h3>3. Continuidade e Cuidado</h3>
+      <p>Definimos juntos a frequência dos encontros e a emissão de recibos caso deseje solicitar reembolso pelo seu convênio médico.</p>
+    </div>
   </div>
 
   <h2>Áreas de Atendimento em Psicoterapia Online</h2>
@@ -48,12 +71,12 @@ const cityPages = seoMatrix.pages.filter((p) => p.type === 'cidade');
   </div>
 
   <h2>Psicólogo Online por Cidade e Região</h2>
-  <p>Acesse os detalhes do atendimento psicológico online dedicado às nossas principais regiões de atuação e vínculo:</p>
+  <p>Conheça os detalhes do atendimento psicológico online dedicado às nossas principais regiões de atuação:</p>
   <div class="grid">
     {cityPages.map((page) => (
       <a href={`/atendimento/${page.slug}`} class="link-card">
         <strong>Psicólogo Online em {page.city}</strong>
-        <span>Psicoterapia online e Psicanálise &rarr;</span>
+        <span>Psicoterapia online e Psicanálise Winnicottiana &rarr;</span>
       </a>
     ))}
   </div>

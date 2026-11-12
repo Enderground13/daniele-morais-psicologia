@@ -11,7 +11,8 @@ export function getStaticPaths() {
 }
 
 const { page } = Astro.props;
-const isGuaruja = page.city.toLowerCase().includes('guarujá');
+const cityLower = page.city.toLowerCase();
+const isHomeCareCity = cityLower.includes('guarujá') || cityLower.includes('santos');
 
 const relatedPages = seoMatrix.pages
   .filter((p) => p.slug !== page.slug && (p.city === page.city || p.specialty === page.specialty))
@@ -25,26 +26,26 @@ const faqSchema = {
       "name": `Como funciona a psicoterapia online para ${page.specialty}?`,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": `As sessões de psicoterapia online têm duração média de 50 minutos e são conduzidas pela psicóloga ${PROFILE.name} (${PROFILE.crp}) sob a abordagem da Psicanálise, para adolescentes a partir de 15 anos, adultos e idosos.`
+        "text": `As sessões de psicoterapia online têm duração de 50 minutos, ocorrem nos períodos da manhã ou tarde por videochamada sigilosa e são conduzidas por ${PROFILE.name} (${PROFILE.crp}), psicóloga graduada pelo UNISAL com 10 anos de experiência clínica e abordagem na Psicanálise Winnicottiana.`
       }
     },
     {
       "@type": "Question",
-      "name": `Quem mora em ${page.city} pode agendar consulta com psicólogo online?`,
+      "name": `Vocês emitem recibo para reembolso de convênio médico?`,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sim. O atendimento psicológico online é autorizado e regulamentado pelo Conselho Federal de Psicologia (e-Psi), garantindo o mesmo rigor ético e sigilo das sessões presenciais."
+        "text": "Sim. O atendimento é particular com emissão de recibo válido para solicitação de reembolso junto aos planos de saúde que oferecem essa cobertura."
       }
     }
   ]
 };
 
-const customWppMsg = `Olá, Daniele! Vi a página sobre ${page.specialty} (${page.city}) e gostaria de saber como funciona a psicoterapia online.`;
+const customWppMsg = `Olá, Daniele! Vi a página sobre ${page.specialty} (${page.city}) e gostaria de saber sobre horários disponíveis.`;
 ---
 
 <BaseLayout
   title={`${page.title} | ${PROFILE.name}`}
-  description={`${page.description} Psicoterapia online e psicólogo online com abordagem em Psicanálise para adolescentes (15+), adultos e idosos (${PROFILE.crp}).`}
+  description={`${page.description} Psicoterapia online e psicólogo online com abordagem na Psicanálise Winnicottiana para adolescentes (15+), adultos e idosos (${PROFILE.crp}).`}
   canonicalPath={`/atendimento/${page.slug}`}
   schema={faqSchema}
 >
@@ -55,55 +56,55 @@ const customWppMsg = `Olá, Daniele! Vi a página sobre ${page.specialty} (${pag
     <span>{page.city}</span>
   </nav>
 
-  <span class="badge">{PROFILE.approach} • {PROFILE.crp} • {page.city}</span>
+  <span class="badge">{PROFILE.shortApproach} • {PROFILE.crp} • {page.city}</span>
   <h1>{page.h1}</h1>
   <p style="font-size: 1.12rem; color: var(--text);">
-    {page.description} Sessões de <strong>psicoterapia online</strong> conduzidas por <strong>{PROFILE.name}</strong> ({PROFILE.crp}), com escuta psicanalítica dedicada a <strong>adolescentes a partir de 15 anos, adultos e idosos</strong>.
+    {page.description} Sessões de <strong>psicoterapia online</strong> conduzidas por <strong>{PROFILE.name}</strong> ({PROFILE.crp}), psicóloga com 10 anos de prática clínica, orientada pela <strong>Psicanálise Winnicottiana</strong> para <strong>adolescentes a partir de 15 anos, adultos e idosos</strong>.
   </p>
 
-  {isGuaruja && (
+  {isHomeCareCity && (
     <div class="card" style="border-left: 4px solid var(--primary); background: #f4f8f6;">
-      <h3>Opção de Atendimento Domiciliar no Guarujá - SP</h3>
+      <h3>Atendimento Psicológico Domiciliar em Guarujá e Santos</h3>
       <p style="margin-bottom: 0; color: var(--text);">
-        Além da modalidade de <strong>psicólogo online</strong> por videochamada, para pacientes residentes na cidade do <strong>Guarujá - SP</strong> existe a possibilidade de atendimento psicológico domiciliar (ideal para idosos ou pessoas que preferem o acompanhamento presencial no conforto de casa, sujeito à disponibilidade de agenda).
+        Além do formato de <strong>psicólogo online</strong> por videochamada, para pacientes residentes em <strong>Guarujá e Santos</strong> há a possibilidade de atendimento domiciliar voltado a <strong>idosos, pessoas com mobilidade reduzida ou pacientes em quadros depressivos</strong> nos quais sair de casa seja dificultoso devido ao momento clínico.
       </p>
     </div>
   )}
 
   <div class="card" style="background: var(--accent); border-color: #cbd8cf;">
-    <h2>Agende sua sessão de psicoterapia online</h2>
+    <h2>Agende sua sessão (Manhã ou Tarde)</h2>
     <p style="color: var(--text);">
-      Atendimento individual por videochamada criptografada, com sigilo absoluto e flexibilidade de horários. Entre em contato para verificar disponibilidade.
+      Atendimento individual sigiloso (e-Psi ativo), com horários nos períodos da <strong>manhã e da tarde</strong> e emissão de <strong>recibo para reembolso de convênio</strong>.
     </p>
     <a href={getWhatsAppLink(customWppMsg)} target="_blank" rel="noopener noreferrer" class="btn">
       Falar com Daniele no WhatsApp
     </a>
   </div>
 
-  <h2>Como funciona o atendimento psicológico online?</h2>
+  <h2>Diferenciais do Atendimento Clínico</h2>
   <div class="grid">
     <div class="card">
-      <h3>1. Abordagem Psicanalítica</h3>
-      <p>Um espaço de fala livre e escuta clínica aprofundada para compreender a origem do sofrimento emocional, sintomas e repetições.</p>
+      <h3>Psicanálise Winnicottiana</h3>
+      <p>Baseada na clínica de Donald Woods Winnicott, prioriza um ambiente de acolhimento seguro (<em>holding</em>), respeitando o tempo e a história singular de cada pessoa.</p>
     </div>
     <div class="card">
-      <h3>2. Público Atendido</h3>
-      <p>Acompanhamento especializado para <strong>adolescentes (a partir de 15 anos), adultos e idosos</strong>, respeitando a singularidade de cada fase da vida.</p>
+      <h3>Formação e Experiência (Desde 2016)</h3>
+      <p>Graduada pelo <strong>UNISAL (Lorena-SP)</strong> com início prático na <strong>USP-Lorena</strong>. Ampla experiência presencial (desde 2016) e online (desde 2021).</p>
     </div>
     <div class="card">
-      <h3>3. Sigilo e Ética (e-Psi)</h3>
-      <p>Sessões de 50 minutos via videochamada segura, em total conformidade com o Código de Ética Profissional do Psicólogo ({PROFILE.crp}).</p>
+      <h3>Público e Reembolso</h3>
+      <p>Atendimento para <strong>adolescentes (15+), adultos e idosos</strong>, com emissão de recibo para reembolso em planos de saúde.</p>
     </div>
   </div>
 
   <h2>Perguntas Frequentes sobre Psicólogo Online</h2>
   <div class="card">
-    <h3>A psicoterapia online na abordagem da Psicanálise funciona?</h3>
-    <p>Sim. A escuta psicanalítica baseia-se na fala e na relação terapêutica, sendo plenamente eficaz no formato online e regulamentada pelo Conselho Federal de Psicologia.</p>
+    <h3>Como funciona a psicoterapia online na abordagem Winnicottiana?</h3>
+    <p>As sessões duram 50 minutos por videochamada criptografada. O foco é construir um espaço confiável de escuta e elaboração emocional, regulamentado pelo Conselho Federal de Psicologia ({PROFILE.crp}).</p>
   </div>
   <div class="card">
-    <h3>Qual a formação e trajetória da psicóloga?</h3>
-    <p><strong>{PROFILE.name}</strong> ({PROFILE.crp}) atua hoje a partir do <strong>Guarujá - SP</strong> (onde também oferece opção de atendimento domiciliar), possui experiência anterior em consultório clínico em <strong>Lorena - SP</strong> e é natural de <strong>Piquete - SP</strong>, atendendo pacientes online em todo o Brasil.</p>
+    <h3>Qual a história e vínculo regional da psicóloga?</h3>
+    <p><strong>{PROFILE.name}</strong> (37 anos, casada e mãe) é natural de <strong>Piquete-SP</strong>, formou-se pelo <strong>UNISAL</strong> e iniciou na <strong>USP-Lorena</strong>, tendo atuado anos em consultório em <strong>Lorena-SP</strong>. Hoje reside no <strong>Guarujá-SP</strong>, atendendo online em todo o Brasil e em domicílio em Guarujá e Santos.</p>
   </div>
 
   {relatedPages.length > 0 && (
