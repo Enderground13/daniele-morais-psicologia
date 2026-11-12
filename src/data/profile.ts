@@ -23,5 +23,5 @@ export const PROFILE = {
 
 export function getWhatsAppLink(customText?: string): string {
   const msg = encodeURIComponent(customText || PROFILE.whatsappMessage);
-  return "https://://whatsapp.com" + msg;
+  return "https://api.whatsapp.com/send?phone=5512981026474&text=" + msg;
 }
