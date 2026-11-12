@@ -17,9 +17,10 @@ const baseSchema = {
     {
       "@type": "ProfessionalService",
       "@id": `${PROFILE.siteUrl}/#business`,
-      "name": `${PROFILE.name} — Psicologia Clínica e Psicanálise Winnicottiana`,
-      "description": `Psicoterapia online e atendimento domiciliar (Guarujá e Santos) com abordagem em Psicanálise Winnicottiana. Psicóloga graduada pelo UNISAL, com experiência clínica desde 2016 (${PROFILE.crp}). Atendimento para adolescentes (15+), adultos e idosos nos períodos da manhã e tarde, com recibo para reembolso.`,
+      "name": `${PROFILE.name} — Psicoterapia Online e Psicologia Clínica`,
+      "description": `Psicoterapia online e atendimento domiciliar (Guarujá e Santos) com abordagem em Psicanálise Winnicottiana. Psicóloga graduada pelo UNISAL, com 10 anos de experiência clínica (${PROFILE.crp}). Atendimento para adolescentes (15+), adultos e idosos nos períodos da manhã e tarde, com recibo para reembolso.`,
       "url": PROFILE.siteUrl,
+      "image": `${PROFILE.siteUrl}/daniele-morais-psicologa.jpeg`,
       "telephone": "+55-12-98102-6474",
       "priceRange": "$$",
       "address": {
@@ -37,24 +38,14 @@ const baseSchema = {
         { "@type": "City", "name": "Piquete" },
         { "@type": "City", "name": "São Paulo" },
         { "@type": "Country", "name": "Brasil" }
-      ],
-      "knowsAbout": [
-        "Psicanálise Winnicottiana",
-        "Donald Woods Winnicott",
-        "Psicoterapia Online",
-        "Atendimento Psicológico Domiciliar Guarujá e Santos",
-        "Ansiedade",
-        "Depressão",
-        "Burnout",
-        "Saúde Mental do Idoso",
-        "Psicoterapia para Adolescentes"
       ]
     },
     {
       "@type": "Person",
       "@id": `${PROFILE.siteUrl}/#person`,
       "name": PROFILE.name,
-      "jobTitle": "Psicóloga Clínica — Psicanálise Winnicottiana",
+      "image": `${PROFILE.siteUrl}/daniele-morais-psicologa.jpeg`,
+      "jobTitle": "Psicóloga Clínica — Psicoterapia Online e Psicanálise Winnicottiana",
       "identifier": PROFILE.crp,
       "alumniOf": {
         "@type": "CollegeOrUniversity",
@@ -81,48 +72,143 @@ const baseSchema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={`${PROFILE.siteUrl}/daniele-morais-psicologa.jpeg`} />
     <meta property="og:site_name" content={PROFILE.siteName} />
     <script type="application/ld+json" set:html={JSON.stringify(baseSchema)} />
     <style is:global>
       :root {
-        --bg: #fafaf9;
+        --bg: #f6f8f7;
         --surface: #ffffff;
-        --text: #1c1917;
-        --muted: #57534e;
-        --primary: #1e4d40;
-        --primary-hover: #14362d;
-        --accent: #e7efe9;
-        --border: #e7e5e4;
+        --text: #18221e;
+        --muted: #4b5953;
+        --primary: #1b4332;
+        --primary-light: #2d6a4f;
+        --cta: #c85a32;
+        --cta-hover: #a84623;
+        --accent: #e8f1ec;
+        --warm-bg: #fdf6f2;
+        --border: #dce5e0;
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        font-family: system-ui, -apple-system, sans-serif;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: var(--bg);
         color: var(--text);
         line-height: 1.65;
       }
-      .container { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
-      header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 0; position: sticky; top: 0; z-index: 10; }
+      .container { max-width: 980px; margin: 0 auto; padding: 0 1.25rem; }
+      header {
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border);
+        padding: 0.9rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
       .nav-wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-      .brand { font-weight: 700; color: var(--primary); text-decoration: none; font-size: 1.05rem; }
+      .brand { font-weight: 700; color: var(--primary); text-decoration: none; font-size: 1.05rem; letter-spacing: -0.01em; }
       .brand span { display: block; font-size: 0.78rem; font-weight: 500; color: var(--muted); }
-      .btn { display: inline-block; background: var(--primary); color: #fff; padding: 0.75rem 1.35rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-      .btn:hover { background: var(--primary-hover); }
-      .btn-sm { padding: 0.5rem 1rem; font-size: 0.88rem; }
-      main { padding: 2.5rem 0 4rem; }
-      h1 { font-size: clamp(1.75rem, 3.5vw, 2.35rem); line-height: 1.2; color: var(--primary); margin-bottom: 1rem; }
-      h2 { font-size: 1.38rem; color: var(--text); margin: 2rem 0 0.85rem; }
-      h3 { font-size: 1.08rem; color: var(--primary); margin-bottom: 0.4rem; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: var(--cta);
+        color: #ffffff;
+        padding: 0.9rem 1.6rem;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1rem;
+        box-shadow: 0 4px 14px rgba(200, 90, 50, 0.25);
+        transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+      }
+      .btn:hover { background: var(--cta-hover); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(200, 90, 50, 0.32); }
+      .btn-sm { padding: 0.55rem 1.1rem; font-size: 0.88rem; box-shadow: none; }
+      main { padding: 2rem 0 4.5rem; }
+      .hero {
+        background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 2.25rem 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 30px rgba(27, 67, 50, 0.05);
+      }
+      h1 {
+        font-size: clamp(1.85rem, 4vw, 2.65rem);
+        line-height: 1.15;
+        color: var(--primary);
+        margin-bottom: 0.9rem;
+        letter-spacing: -0.02em;
+      }
+      .hero-sub {
+        font-size: clamp(1.05rem, 2vw, 1.22rem);
+        color: var(--text);
+        max-width: 680px;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+      .trust-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        margin-top: 1.35rem;
+        padding-top: 1.1rem;
+        border-top: 1px solid rgba(27, 67, 50, 0.12);
+        font-size: 0.85rem;
+        color: var(--primary);
+        font-weight: 600;
+      }
+      h2 { font-size: 1.45rem; color: var(--primary); margin: 2.25rem 0 0.9rem; letter-spacing: -0.01em; }
+      h3 { font-size: 1.08rem; color: var(--primary); margin-bottom: 0.45rem; }
       p { margin-bottom: 1rem; color: var(--muted); }
-      .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; }
-      .badge { display: inline-block; background: var(--accent); color: var(--primary); font-size: 0.8rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 0.85rem; }
-      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem; margin-top: 1rem; }
-      .link-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; text-decoration: none; color: var(--text); }
-      .link-card:hover { border-color: var(--primary); }
-      .link-card strong { display: block; color: var(--primary); margin-bottom: 0.25rem; font-size: 0.98rem; }
-      .link-card span { font-size: 0.85rem; color: var(--muted); }
-      footer { background: var(--surface); border-top: 1px solid var(--border); padding: 2rem 0; font-size: 0.85rem; color: var(--muted); }
-      .ethics-box { background: #f5f5f4; border-left: 4px solid var(--primary); padding: 1rem; border-radius: 6px; margin-top: 1rem; font-size: 0.82rem; }
+      .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem; margin-bottom: 1.25rem; }
+      .badge {
+        display: inline-block;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        color: var(--primary);
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 0.32rem 0.85rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+      }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(275px, 1fr)); gap: 1rem; margin-top: 1rem; }
+      .link-card {
+        display: block;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.2rem;
+        text-decoration: none;
+        color: var(--text);
+        transition: border-color 0.2s, transform 0.15s;
+      }
+      .link-card:hover { border-color: var(--cta); transform: translateY(-2px); }
+      .link-card strong { display: block; color: var(--primary); margin-bottom: 0.3rem; font-size: 1rem; }
+      .link-card span { font-size: 0.86rem; color: var(--muted); }
+      .floating-wpp {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #1f8b4c;
+        color: #fff;
+        padding: 0.8rem 1.2rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.9rem;
+        box-shadow: 0 6px 20px rgba(31, 139, 76, 0.35);
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+      .floating-wpp:hover { background: #176e3b; }
+      footer { background: var(--surface); border-top: 1px solid var(--border); padding: 2.25rem 0 5rem; font-size: 0.85rem; color: var(--muted); }
+      .ethics-box { background: var(--bg); border-left: 4px solid var(--primary); padding: 1rem; border-radius: 6px; margin-top: 1rem; font-size: 0.82rem; }
     </style>
   </head>
   <body>
@@ -130,19 +216,22 @@ const baseSchema = {
       <div class="container nav-wrap">
         <a href="/" class="brand">
           {PROFILE.name}
-          <span>Psicóloga Clínica • {PROFILE.shortApproach} • {PROFILE.crp}</span>
+          <span>Psicoterapia Online &amp; Clínica • {PROFILE.crp}</span>
         </a>
         <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" class="btn btn-sm">
-          Agendar Conversa Inicial
+          Agendar pelo WhatsApp
         </a>
       </div>
     </header>
     <main class="container">
       <slot />
     </main>
+    <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" class="floating-wpp" aria-label="Conversar no WhatsApp">
+      <span>WhatsApp • Agendar</span>
+    </a>
     <footer>
       <div class="container">
-        <p><strong>{PROFILE.name}</strong> — {PROFILE.crp} | {PROFILE.approach} | {PROFILE.ePsiStatus}</p>
+        <p><strong>{PROFILE.name}</strong> — {PROFILE.crp} | {PROFILE.ePsiStatus}</p>
         <p>{PROFILE.education} • Experiência clínica desde 2016 • {PROFILE.schedule} • {PROFILE.reimbursement}.</p>
         <div class="ethics-box">
           <strong>Aviso Ético (Resolução CFP nº 11/2018):</strong> O atendimento psicológico online é realizado em ambiente virtual sigiloso e criptografado. Este serviço não oferece suporte imediato para crises suicidas ou emergências psiquiátricas. Em caso de urgência, ligue gratuitamente para o <strong>CVV (188)</strong> ou procure o pronto-socorro mais próximo.
