@@ -17,7 +17,7 @@ export const PROFILE = {
   baseState: "SP",
   whatsappNumber: "5512981026474",
   whatsappMessage: "Olá, Daniele! Encontrei seu site e gostaria de informações sobre o atendimento psicológico.",
-  siteUrl: "https://vercel.app",
+  siteUrl: "https://psicologadanielemorais.vercel.app",
   siteName: "Daniele Barbosa Pirriello de Morais | Psicóloga e Psicanálise Winnicottiana (CRP 06/136976)"
 };
 
