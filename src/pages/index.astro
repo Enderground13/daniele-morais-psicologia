@@ -8,17 +8,16 @@ const homeCareCities = seoMatrix.pages.filter(
   (p) => p.type === 'cidade' && (p.city.includes('Guarujá') || p.city.includes('Santos'))
 );
 ---
-
 <BaseLayout
-  title={`${PROFILE.name} | Psicoterapia Online e Psicólogo Online (${PROFILE.crp})`}
-  description="Psicoterapia online ética e acolhedora para adolescentes (15+), adultos e idosos. Atendimento por videochamada de onde você estiver, com sigilo absoluto, recibo para reembolso e opção domiciliar em Guarujá e Santos."
+  title={`Psicóloga Online e Domiciliar em Guarujá e Santos | ${PROFILE.name} (${PROFILE.crp})`}
+  description="Psicoterapia Online para todo o Brasil e Atendimento Psicológico Domiciliar em Guarujá e Santos. Psicanálise Winnicottiana com 10 anos de experiência para adolescentes (15+), adultos e idosos. Recibo para reembolso."
   canonicalPath="/"
 >
   <section class="hero">
-    <span class="badge">Atendimento Online Regulamentado • {PROFILE.crp}</span>
-    <h1>Psicoterapia Online: um espaço seguro para cuidar de você, onde estiver.</h1>
+    <span class="badge">Psicanálise Winnicottiana • Online e Domiciliar ({PROFILE.crp})</span>
+    <h1>Psicóloga Online e Atendimento Domiciliar em Guarujá e Santos</h1>
     <p class="hero-sub">
-      Escuta profissional, acolhedora e sigilosa por videochamada para ajudar você a atravessar ansiedade, esgotamento, tristeza ou momentos difíceis sem precisar enfrentar trânsito.
+      Um espaço seguro e sigiloso de escuta clínica (Psicanálise Winnicottiana) para atravessar ansiedade, esgotamento, tristeza ou momentos difíceis — por videochamada de onde você estiver ou no conforto da sua casa na Baixada Santista.
     </p>
     <div>
       <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" class="btn">
