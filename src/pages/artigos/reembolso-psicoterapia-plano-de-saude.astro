@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PROFILE, getWhatsAppLink } from '../../data/profile';
+
+const pageTitle = `Reembolso de Psicoterapia pelo Plano de Saúde: Como Funciona o Recibo | ${PROFILE.name}`;
+const pageDesc = "Entenda como solicitar reembolso de sessões de psicoterapia online ou domiciliar no seu convênio médico e quais dados constam no recibo oficial da psicóloga.";
+
+const articleSchema = {
+  "@type": "Article",
+  "headline": "Reembolso de Psicoterapia pelo Plano de Saúde: Como Funciona o Recibo Particular",
+  "description": pageDesc,
+  "datePublished": "2026-11-14",
+  "author": { "@id": `${PROFILE.siteUrl}/#person` },
+  "publisher": { "@id": `${PROFILE.siteUrl}/#business` }
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  canonicalPath="/artigos/reembolso-psicoterapia-plano-de-saude"
+  schema={articleSchema}
+>
+  <nav style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--muted);">
+    <a href="/" style="color: var(--primary); text-decoration: none;">Início</a> &rsaquo;
+    <span>Artigos Clínicos</span> &rsaquo;
+    <span>Reembolso de Psicoterapia</span>
+  </nav>
+
+  <article class="card">
+    <span class="badge">Atendimento Online &amp; Domiciliar • {PROFILE.crp}</span>
+    <h1>Reembolso de Psicoterapia pelo Plano de Saúde: Como Funciona o Recibo Particular</h1>
+    <p style="font-size: 1.12rem; color: var(--text);">
+      Muitas pessoas desejam escolher uma psicóloga de confiança fora da rede credenciada, mas têm dúvidas sobre como utilizar o benefício de reembolso do convênio médico. Veja como esse processo funciona na prática.
+    </p>
+
+    <p>
+      Escolher o profissional que vai acompanhar o seu processo terapêutico exige vínculo, identificação com a abordagem clínica e disponibilidade de horários. Quando o plano de saúde oferece a modalidade de <strong>livre escolha (reembolso)</strong>, você pode realizar suas sessões particulares — tanto na <a href="/artigos/psicoterapia-online-espaco-seguro" style="color: var(--primary); font-weight: 600;">psicoterapia online</a> quanto no <a href="/artigos/atendimento-domiciliar-guaruja-santos" style="color: var(--primary); font-weight: 600;">atendimento domiciliar em Guarujá e Santos</a> — e solicitar o ressarcimento parcial ou integral ao seu convênio.
+    </p>
+
+    <h2>Todo plano de saúde oferece reembolso para psicologia?</h2>
+    <p>
+      A disponibilidade e o percentual de reembolso variam conforme a operadora e a categoria do seu contrato (empresarial, coletivo por adesão ou individual). Antes de iniciar, vale consultar no aplicativo do seu convênio ou na central de atendimento:
+    </p>
+    <p><strong>&bull; Cobertura de Livre Escolha:</strong> Confirme se o seu plano contempla reembolso para consultas com psicólogo fora da rede credenciada.</p>
+    <p><strong>&bull; Valor da Tabela:</strong> Pergunte qual é o valor teto reembolsado por sessão de psicoterapia no seu plano específico.</p>
+
+    <h2>O que consta no recibo emitido pela psicóloga?</h2>
+    <p>
+      Para que a operadora analise e aprove o pedido sem pendências burocráticas, o comprovante precisa seguir as normas fiscais e do Conselho Federal de Psicologia. Nos atendimentos realizados por <strong>{PROFILE.name} ({PROFILE.crp})</strong>, o recibo oficial é emitido contendo:
+    </p>
+    <p><strong>1. Identificação profissional completa:</strong> Nome completo da psicóloga, CPF e número de registro ativo no Conselho Regional de Psicologia (CRP 06/136976).</p>
+    <p><strong>2. Dados do paciente e titular:</strong> Nome completo e CPF de quem realizou o atendimento (e do titular do plano, quando aplicável).</p>
+    <p><strong>3. Detalhamento clínico e datas:</strong> Descrição do serviço prestado (sessão de psicoterapia), datas exatas de cada encontro e valor total pago.</p>
+
+    <h2>É necessário encaminhamento médico para pedir reembolso?</h2>
+    <p>
+      A maioria das operadoras solicita um <strong>encaminhamento ou pedido médico</strong> (que pode ser emitido por um psiquiatra, clínico geral ou médico de outra especialidade) indicando a necessidade de acompanhamento psicológico. Esse documento costuma ter validade de 6 a 12 meses, dependendo das regras internas de cada convênio.
+    </p>
+
+    <h2>A psicoterapia online também dá direito a reembolso?</h2>
+    <p>
+      <strong>Sim.</strong> A psicoterapia online é plenamente regulamentada pelo Conselho Federal de Psicologia (Resolução CFP nº 11/2018) e possui a mesma validade clínica e fiscal que o atendimento presencial. Desde que o profissional possua cadastro ativo no <strong>e-Psi</strong> e emita o recibo regular, o documento é aceito normalmente pelas operadoras de saúde.
+    </p>
+
+    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--warm-bg); border-radius: 12px; border-left: 4px solid var(--cta);">
+      <h3>Dúvidas sobre horários ou emissão de recibo?</h3>
+      <p style="color: var(--text);">
+        Atendimentos particulares nos períodos da <strong>manhã e da tarde</strong> (Online para todo o Brasil e Domiciliar em Guarujá e Santos - SP). Fale diretamente pelo WhatsApp para agendar uma primeira conversa.
+      </p>
+      <a href={getWhatsAppLink("Olá, Daniele! Li o artigo sobre reembolso de psicoterapia pelo plano de saúde e gostaria de saber mais sobre os atendimentos.")} target="_blank" rel="noopener noreferrer" class="btn">
+        Conversar pelo WhatsApp
+      </a>
+    </div>
+  </article>
+</BaseLayout>

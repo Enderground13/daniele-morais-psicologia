@@ -15,20 +15,33 @@ const baseSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
+      "@type": ["Psychologist", "MedicalBusiness"],
       "@id": `${PROFILE.siteUrl}/#business`,
-      "name": `${PROFILE.name} — Psicoterapia Online e Psicologia Clínica`,
-      "description": `Psicoterapia online e atendimento domiciliar (Guarujá e Santos) com abordagem em Psicanálise Winnicottiana. Psicóloga graduada pelo UNISAL, com 10 anos de experiência clínica (${PROFILE.crp}). Atendimento para adolescentes (15+), adultos e idosos nos períodos da manhã e tarde, com recibo para reembolso.`,
+      "name": `${PROFILE.name} — Psicóloga Clínica Online e Domiciliar`,
+      "description": `Psicoterapia online para todo o Brasil e atendimento psicológico domiciliar em Guarujá e Santos com abordagem em Psicanálise Winnicottiana. Psicóloga graduada pelo UNISAL com início prático na USP-Lorena e 10 anos de experiência clínica (${PROFILE.crp}). Atendimento para adolescentes (15+), adultos e idosos nos períodos da manhã e tarde, com recibo para reembolso.`,
       "url": PROFILE.siteUrl,
       "image": `${PROFILE.siteUrl}/daniele-morais-psicologa.jpeg`,
       "telephone": "+55-12-98102-6474",
       "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Guarujá",
-        "addressRegion": "SP",
-        "addressCountry": "BR"
-      },
+      "currenciesAccepted": "BRL",
+      "paymentAccepted": "Pix, Transferência Bancária, Dinheiro (Emissão de recibo para reembolso de plano de saúde)",
+      "medicalSpecialty": [
+        "Clinical Psychology",
+        "Psychoanalysis"
+      ],
+      "knowsAbout": [
+        "Psicanálise Winnicottiana",
+        "Donald Woods Winnicott",
+        "Psicoterapia Online",
+        "Atendimento Psicológico Domiciliar",
+        "Ansiedade",
+        "Depressão",
+        "Síndrome de Burnout",
+        "Autoestima",
+        "Luto e Perdas",
+        "Relacionamentos",
+        "Psicologia do Idoso"
+      ],
       "areaServed": [
         { "@type": "City", "name": "Guarujá" },
         { "@type": "City", "name": "Santos" },
@@ -38,7 +51,29 @@ const baseSchema = {
         { "@type": "City", "name": "Piquete" },
         { "@type": "City", "name": "São Paulo" },
         { "@type": "Country", "name": "Brasil" }
-      ]
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços de Psicologia Clínica",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Psicoterapia Online Individual",
+              "description": "Atendimento psicológico por videochamada regulamentado pelo CFP (e-Psi) para adolescentes (15+), adultos e idosos em todo o Brasil."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Atendimento Psicológico Domiciliar em Guarujá e Santos",
+              "description": "Visitas clínicas domiciliares em Guarujá - SP e Santos - SP dedicadas a idosos, pessoas com mobilidade reduzida ou quadros depressivos agudos."
+            }
+          }
+        ]
+      }
     },
     {
       "@type": "Person",
@@ -47,10 +82,16 @@ const baseSchema = {
       "image": `${PROFILE.siteUrl}/daniele-morais-psicologa.jpeg`,
       "jobTitle": "Psicóloga Clínica — Psicoterapia Online e Psicanálise Winnicottiana",
       "identifier": PROFILE.crp,
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "UNISAL - Centro Universitário Salesiano de São Paulo"
-      },
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "UNISAL - Centro Universitário Salesiano de São Paulo"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidade de São Paulo (USP - Lorena)"
+        }
+      ],
       "worksFor": { "@id": `${PROFILE.siteUrl}/#business` }
     },
     ...(schema ? [schema] : [])
