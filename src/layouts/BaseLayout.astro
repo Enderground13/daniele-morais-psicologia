@@ -5,10 +5,11 @@ interface Props {
   title: string;
   description: string;
   canonicalPath?: string;
+  robots?: string;
   schema?: Record<string, any>;
 }
 
-const { title, description, canonicalPath = "/", schema } = Astro.props;
+const { title, description, canonicalPath = "/", robots = "index, follow, max-image-preview:large", schema } = Astro.props;
 const canonicalURL = new URL(canonicalPath, PROFILE.siteUrl).toString();
 
 const baseSchema = {
@@ -106,7 +107,7 @@ const baseSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content={robots} />
     <link rel="canonical" href={canonicalURL} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />

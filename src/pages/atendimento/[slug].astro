@@ -13,7 +13,8 @@ export function getStaticPaths() {
 const { page } = Astro.props;
 const cityLower = page.city.toLowerCase();
 const isHomeCareCity = cityLower.includes('guarujá') || cityLower.includes('santos');
-
+const shouldIndex = page.type === 'especialidade' || (page.type === 'cidade' && isHomeCareCity);
+const pageRobots = shouldIndex ? "index, follow, max-image-preview:large" : "noindex, follow";
 const relatedPages = seoMatrix.pages
   .filter((p) => p.slug !== page.slug && (p.city === page.city || p.specialty === page.specialty))
   .slice(0, 6);
@@ -47,6 +48,7 @@ const customWppMsg = `Olá, Daniele! Vi a página sobre ${page.specialty} (${pag
   title={`${page.title} | ${PROFILE.name}`}
   description={`${page.description} Psicoterapia online e psicólogo online com abordagem na Psicanálise Winnicottiana para adolescentes (15+), adultos e idosos (${PROFILE.crp}).`}
   canonicalPath={`/atendimento/${page.slug}`}
+  robots={pageRobots}
   schema={faqSchema}
 >
   <nav style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--muted);">
